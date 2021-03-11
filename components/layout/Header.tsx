@@ -68,7 +68,6 @@ const Header: React.FC = () => {
           flex-wrap: wrap;
           flex-direction: row;
           justify-content: space-between;
-          border: 1px solid black;
           padding: 12px;
           text-align: center;
         }
