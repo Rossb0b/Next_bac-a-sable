@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout/Layout"
 
 
-const Blog: React.FC = (props) => {
+const Index: React.FC = (props) => {
   return (
     <Layout>
       <div className="page">
@@ -18,4 +18,4 @@ const Blog: React.FC = (props) => {
   )
 }
 
-export default Blog
+export default Index
