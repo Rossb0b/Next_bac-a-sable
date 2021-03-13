@@ -1,12 +1,18 @@
 import React, { ReactNode } from "react";
 import Header from "./Header";
 
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
 type Props = {
   children: ReactNode;
 };
 
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+
 const Layout: React.FC<Props> = (props) => (
   <div>
+  <Elements stripe={stripePromise}>
     <Header />
     <div className="layout">{props.children}</div>
     <style jsx global>{`
@@ -42,6 +48,7 @@ const Layout: React.FC<Props> = (props) => (
         padding: 0 2rem;
       }
     `}</style>
+  </Elements>
   </div>
 );
 

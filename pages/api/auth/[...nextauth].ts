@@ -24,7 +24,7 @@ const options = {
           where: {
             email: credentials.email
           }
-        }) || undefined;
+        });
 
         if (user) {
           const checkPassword = await bcrypt.compare(credentials.password, user.password);
@@ -69,5 +69,5 @@ const options = {
     secret: process.env.SECRET
   },
 
-  debug: true
+  debug: false
 }
