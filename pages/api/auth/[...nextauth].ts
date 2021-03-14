@@ -2,7 +2,7 @@ import { NextApiHandler } from "next";
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import Adapters from "next-auth/adapters";
-import prisma from "../../../lib/db/prisma";
+import prisma from "lib/db/prisma";
 import bcrypt from "bcrypt";
 
 const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options)

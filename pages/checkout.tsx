@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
-import Layout from '../components/layout/Layout'
+import Layout from 'components/layout/Layout'
 
-import CheckoutForm from '../components/stripe/CheckoutForm'
+import CheckoutForm from 'components/stripe/CheckoutForm'
 
 const DonatePage: NextPage = () => {
   return (

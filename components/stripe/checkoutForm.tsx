@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 import CustomDonationInput from './customDonationInput'
 import StripeTestCards from './stripeTestCards'
 
-import getStripe from '../../utils/get-stripejs'
-import { fetchPostJSON } from '../../utils/api-helpers'
-import { formatAmountForDisplay } from '../../utils/stripe-helpers'
-import * as config from '../../config'
+import getStripe from 'utils/get-stripejs'
+import { fetchPostJSON } from 'utils/api-helpers'
+import { formatAmountForDisplay } from 'utils/stripe-helpers'
+import * as config from 'config'
 
 const CheckoutForm = () => {
   const [loading, setLoading] = useState(false)
@@ -38,7 +38,7 @@ const CheckoutForm = () => {
     const { error } = await stripe!.redirectToCheckout({
       sessionId: response.id,
     })
-    
+
     console.warn(error.message)
     setLoading(false)
   }

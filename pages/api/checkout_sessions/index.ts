@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { CURRENCY, MIN_AMOUNT, MAX_AMOUNT } from '../../../config'
-import { formatAmountForStripe } from '../../../utils/stripe-helpers'
+import { CURRENCY, MIN_AMOUNT, MAX_AMOUNT } from 'config'
+import { formatAmountForStripe } from 'utils/stripe-helpers'
 
 import Stripe from 'stripe'
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -21,11 +21,11 @@ export default async function handler(
       }
       // Create Checkout Sessions from body params.
       const params: Stripe.Checkout.SessionCreateParams = {
-        submit_type: 'donate',
+        submit_type: 'pay',
         payment_method_types: ['card'],
         line_items: [
           {
-            name: 'Custom amount donation',
+            name: 'Réservation',
             amount: formatAmountForStripe(amount, CURRENCY),
             currency: CURRENCY,
             quantity: 1,

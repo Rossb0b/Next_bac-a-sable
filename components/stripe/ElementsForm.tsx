@@ -4,9 +4,9 @@ import CustomDonationInput from './customDonationInput'
 import StripeTestCards from './stripeTestCards'
 import PrintObject from './printObject'
 
-import { fetchPostJSON } from '../../utils/api-helpers'
-import { formatAmountForDisplay } from '../../utils/stripe-helpers'
-import * as config from '../../config'
+import { fetchPostJSON } from 'utils/api-helpers'
+import { formatAmountForDisplay } from 'utils/stripe-helpers'
+import * as config from 'config'
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 
