@@ -13,12 +13,12 @@ const options = {
     Providers.Credentials({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "email", placeholder: "..@example.com" },
-        password: { label: "Password", type: "password" }
+        email: { label: "email", type: "email", placeholder: "..@example.com" },
+        password: { label: "password", type: "password" }
       },
 
       async authorize(credentials) {
-        let user = await prisma.user.findUnique({
+        const user = await prisma.user.findUnique({
           where: {
             email: credentials.email
           }
@@ -30,9 +30,11 @@ const options = {
           if(!checkPassword) {
             return;
           }
-        }
 
-        return user;
+          return user;
+        } else {
+          return null;
+        }
       }
     }),
     Providers.Google({
@@ -45,7 +47,6 @@ const options = {
     async signIn(account) {
       let isAllowedToSignIn = true;
 
-      console.log("blabla", account.id);
       if (account.provider === "google") {
         const userDB = await prisma.account.findUnique({
           where: {
@@ -79,5 +80,5 @@ const options = {
     secret: process.env.SECRET
   },
 
-  debug: false
+  debug: true
 }
