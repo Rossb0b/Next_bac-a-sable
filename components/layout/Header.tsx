@@ -22,9 +22,9 @@ const Header: React.FC = () => {
 
   const menuContainer = (
     <div className="menu_container">
-      <Link href="/">
-        <a className="bold" data-active={isActive("/")}>
-          First <br/> redirection
+      <Link href="/checkout">
+        <a className="bold" data-active={isActive("/checkout")}>
+          Checkout
         </a>
       </Link>
       <Link href="/">
@@ -64,8 +64,13 @@ const Header: React.FC = () => {
     userContainer = (
       <div className="user_container">
         <Link href="/api/auth/signin">
-          <a className="bold" data-active={isActive("/signup")}>
-            Log in
+          <a className="bold" data-active={isActive("/sign-in")}>
+            Sign-in
+          </a>
+        </Link>
+        <Link href="/auth/signup">
+          <a className="bold" data-active={isActive("/sign-up")}>
+            Sign-up
           </a>
         </Link>
       </div>

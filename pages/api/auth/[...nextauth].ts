@@ -13,8 +13,6 @@ const options = {
     Providers.Credentials({
       name: "Credentials",
       credentials: {
-        firstName: { label: "Firstname", type: "text", placeholder: "John"},
-        lastName: { label: "Lastname", type: "text", placeholder: "Doe" },
         email: { label: "Email", type: "email", placeholder: "..@example.com" },
         password: { label: "Password", type: "password" }
       },
@@ -34,19 +32,6 @@ const options = {
           }
         }
 
-        if (!user) {
-          const encryptedPassword = await bcrypt.hash(credentials.password, 10);
-
-          user = await prisma.user.create({
-            data: {
-              name: `${credentials.firstName} ${credentials.lastName}`,
-              email: credentials.email,
-              password: encryptedPassword,
-              image: null
-            }
-          })
-        }
-
         return user;
       }
     }),
@@ -55,6 +40,31 @@ const options = {
       clientSecret: process.env.GOOGLE_SECRET,
     })
   ],
+
+  callbacks: {
+    async signIn(account) {
+      let isAllowedToSignIn = true;
+
+      console.log("blabla", account.id);
+      if (account.provider === "google") {
+        const userDB = await prisma.account.findUnique({
+          where: {
+            providerAccountId: account.id
+          }
+        });
+
+        if (!userDB) {
+          isAllowedToSignIn = false;
+        }
+      }
+
+      if (isAllowedToSignIn) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
 
   adapter: Adapters.Prisma.Adapter({ prisma }),
 
