@@ -47,7 +47,7 @@ const options = {
     async signIn(account) {
       let isAllowedToSignIn = true;
 
-      if (account.provider === "google") {
+      if (account.provider === "credentials") {
         const userDB = await prisma.account.findUnique({
           where: {
             providerAccountId: account.id
@@ -80,5 +80,5 @@ const options = {
     secret: process.env.SECRET
   },
 
-  debug: true
+  debug: false
 }
