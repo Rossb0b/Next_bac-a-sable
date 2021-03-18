@@ -1,9 +1,6 @@
 import React, { ReactNode } from "react";
 import Header from "./Header";
 
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-
 type Props = {
   children: ReactNode;
 };
